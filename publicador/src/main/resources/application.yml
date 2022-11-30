@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: publicador
+  rabbitmq:
+    host: rabbit
+    port: 5672 #essa e a porta normal, sem ser a d aqle pra acessar no navegador
+    username: guest
+    password: guest
+
+mq:
+  queues:
+    mensagens: mensagens

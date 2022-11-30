@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+  rabbitmq:
+    container_name: rabbit
+    image: rabbitmq:3.10-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - redes
+      
+  publicador:
+    container_name: publicador
+    build:
+      context: ./publicador
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - redes
+      
+  escutador:
+    container_name: escutador
+    build:
+      context: ./escutador
+      dockerfile: Dockerfile
+    restart: always
+    networks:
+      - redes
+    
+networks:
+  redes:
+    driver: bridge
